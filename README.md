@@ -6,7 +6,7 @@ It leverages the Google Gemini 2.5 Flash model via native Structured Outputs (JS
 
 🚀 Live Demo
 
-(You will put your GitHub Pages link here once we generate it in Step 4)
+https://lucifer12049.github.io/phishguard/
 
 🧠 System Architecture
 
