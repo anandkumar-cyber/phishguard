@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PhishGuard — Intelligent Threat Analysis Workspace combining deterministic cybersecurity heuristics with AI threat synthesis." />
+  <title>PhishGuard — Threat Analysis Workspace & Security Workbench</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="#overview" class="brand-logo">
+          <div class="logo-shield">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span class="brand-name">PhishGuard</span>
+        </a>
+        <span class="version-pill">v3.0</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-category">Threat Workbench</div>
+        <button class="nav-item active" data-view="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Overview</span>
+        </button>
+        <button class="nav-item" data-view="analyze">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Analyze Artifact</span>
+        </button>
+        <button class="nav-item" data-view="investigations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Investigations</span>
+        </button>
+        <button class="nav-item" data-view="analytics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span>Session Telemetry</span>
+        </button>
+
+        <div class="nav-category">Knowledge & Intelligence</div>
+        <button class="nav-item" data-view="learn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Threat Encyclopedia</span>
+        </button>
+
+        <div class="nav-category">System</div>
+        <button class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings & BYOK</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="engine-status-badge">
+          <span class="pulse-dot"></span>
+          <span id="sidebar-engine-mode-text">Heuristic Engine: Ready</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN WORKSPACE -->
+    <div class="main-wrapper">
+      
+      <!-- TOP BAR -->
+      <header class="top-bar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="btn-icon mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Menu" style="display: none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="top-bar-title" id="page-title">Threat Overview</h1>
+        </div>
+
+        <div class="top-bar-actions">
+          <button class="btn-sm" id="theme-toggle-btn" title="Toggle Dark/Light Theme">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <span id="theme-btn-label">Theme</span>
+          </button>
+          <button class="btn-sm btn-primary" data-view="analyze">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>New Investigation</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- VIEW CONTAINER -->
+      <main class="view-container">
+
+        <!-- 1. OVERVIEW VIEW -->
+        <section class="view-section active" id="view-overview">
+          <div class="view-header">
+            <h2 class="view-heading">Security Investigations Dashboard</h2>
+            <p class="view-subheading">Real-time threat metrics computed from local investigative session data.</p>
+          </div>
+
+          <!-- Real KPI Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-card-header">
+                <span class="kpi-title">Total Investigations</span>
+                <div class="kpi-icon" style="background: var(--cyan-dim); color: var(--cyan);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+              </div>
+              <div class="kpi-value" id="kpi-total-scans">0</div>
+              <div class="kpi-footnote">Artifacts triaged this session</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-card-header">
+                <span class="kpi-title">Threats Isolated</span>
+                <div class="kpi-icon" style="background: var(--crimson-dim); color: var(--crimson);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
+              </div>
+              <div class="kpi-value" style="color: var(--crimson);" id="kpi-threats-detected">0</div>
+              <div class="kpi-footnote">High Risk & Malicious verdicts</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-card-header">
+                <span class="kpi-title">Suspicious Findings</span>
+                <div class="kpi-icon" style="background: var(--amber-dim); color: var(--amber);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              </div>
+              <div class="kpi-value" style="color: var(--amber);" id="kpi-suspicious-count">0</div>
+              <div class="kpi-footnote">Elevated vigilance recommended</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-card-header">
+                <span class="kpi-title">Average Risk Index</span>
+                <div class="kpi-icon" style="background: var(--emerald-dim); color: var(--emerald);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              </div>
+              <div class="kpi-value" id="kpi-avg-risk">0<span style="font-size: 1rem; color: var(--text-muted);">/100</span></div>
+              <div class="kpi-footnote">Weighted composite score</div>
+            </div>
+          </div>
+
+          <!-- Quick Recent Investigations Table -->
+          <div style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h3 style="font-size: 1.1rem; font-weight: 700;">Recent Investigations</h3>
+              <button class="btn-sm" data-view="investigations">View All History →</button>
+            </div>
+            <div class="investigations-table-container">
+              <table class="data-table" id="overview-recent-table">
+                <thead>
+                  <tr>
+                    <th>Verdict</th>
+                    <th>Artifact Target</th>
+                    <th>Type</th>
+                    <th>Risk Score</th>
+                    <th>Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody id="overview-recent-tbody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. ANALYZE (SCANNER) VIEW -->
+        <section class="view-section" id="view-analyze">
+          <div class="view-header">
+            <h2 class="view-heading">Threat Analysis Workbench</h2>
+            <p class="view-subheading">Execute deterministic heuristic inspection and AI threat synthesis across digital payloads.</p>
+          </div>
+
+          <div class="scanner-workbench">
+            
+            <!-- Vector Tabs -->
+            <div class="vector-tabs" id="vector-tab-bar">
+              <button class="vector-tab-btn active" data-tab="url">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <span>URL / Web Link</span>
+              </button>
+              <button class="vector-tab-btn" data-tab="message">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>SMS / Text Message</span>
+              </button>
+              <button class="vector-tab-btn" data-tab="email">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>Email Content / Headers</span>
+              </button>
+              <button class="vector-tab-btn" data-tab="apk">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <span>APK Package Name</span>
+              </button>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-header-row">
+              <span class="input-instructions" id="input-instructions-label">Paste a suspicious URL to inspect</span>
+              <span class="char-counter" id="char-counter">0 bytes</span>
+            </div>
+
+            <div class="textarea-container">
+              <textarea class="main-textarea" id="artifact-input" placeholder="https://paypa1-security-login.ru/verify?token=abc123" spellcheck="false"></textarea>
+              <button class="textarea-clear-btn" id="btn-clear-input" title="Clear input">✕</button>
+            </div>
+
+            <!-- Sample Vector Chips -->
+            <div class="sample-chips-row">
+              <span class="sample-chip-label">Test Samples:</span>
+              <div id="sample-chips-container" style="display: flex; gap: 0.4rem; flex-wrap: wrap;"></div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="scan-action-bar">
+              <span class="scan-shortcut-hint">Press <kbd style="background:var(--bg-surface-raised);padding:2px 5px;border-radius:3px;border:1px solid var(--border-subtle)">Ctrl/Cmd + Enter</kbd> to triage</span>
+              <button class="btn-scan-main" id="btn-execute-scan">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span id="btn-scan-text">Execute Threat Scan</span>
+              </button>
+            </div>
+
+            <!-- Progress Pipeline -->
+            <div class="scan-pipeline" id="scan-pipeline" style="display: none;">
+              <div class="pipeline-steps-list" id="pipeline-steps-list">
+                <!-- Dynamically updated -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Dynamic Threat Result HUD Container -->
+          <div id="result-hud-container"></div>
+        </section>
+
+        <!-- 3. INVESTIGATIONS VIEW -->
+        <section class="view-section" id="view-investigations">
+          <div class="view-header">
+            <h2 class="view-heading">Investigation History & Telemetry Log</h2>
+            <p class="view-subheading">Search, filter, and audit local triage records stored in browser sandbox.</p>
+          </div>
+
+          <div class="investigations-toolbar">
+            <input type="text" class="search-input" id="investigations-search" placeholder="Search by domain, keyword, ID, or threat indicator..." />
+            
+            <select class="filter-select" id="filter-verdict">
+              <option value="ALL">All Verdicts</option>
+              <option value="SAFE">Safe Only</option>
+              <option value="SUSPICIOUS">Suspicious Only</option>
+              <option value="HIGH_RISK">High Risk Only</option>
+              <option value="MALICIOUS">Malicious Only</option>
+            </select>
+
+            <select class="filter-select" id="filter-type">
+              <option value="ALL">All Artifact Types</option>
+              <option value="url">URLs Only</option>
+              <option value="message">SMS Only</option>
+              <option value="email">Emails Only</option>
+              <option value="apk">APKs Only</option>
+            </select>
+
+            <button class="btn-sm" id="btn-export-all-history" title="Export all logs as JSON">Export JSON</button>
+            <button class="btn-sm" id="btn-clear-all-history" style="color: var(--crimson);" title="Purge local history">Purge Logs</button>
+          </div>
+
+          <div class="investigations-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Verdict</th>
+                  <th>Artifact Target</th>
+                  <th>Type</th>
+                  <th>Risk Score</th>
+                  <th>Timestamp</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="investigations-tbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="investigations-empty-state" class="empty-state-box" style="display: none; margin-top: 1.5rem;">
+            <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <h4 class="empty-state-title">No Investigation Records Found</h4>
+            <p class="empty-state-desc">No past triage logs match your current search criteria. Run a new scan from the Analyzer.</p>
+            <button class="btn-sm btn-primary" data-view="analyze">Start New Scan</button>
+          </div>
+        </section>
+
+        <!-- 4. ANALYTICS VIEW -->
+        <section class="view-section" id="view-analytics">
+          <div class="view-header">
+            <h2 class="view-heading">Threat Telemetry & Risk Distribution</h2>
+            <p class="view-subheading">Aggregated cybersecurity metrics derived exclusively from genuine local triage data.</p>
+          </div>
+
+          <div id="analytics-content-container">
+            <!-- Dynamic Telemetry Graphs & Breakdowns rendered here -->
+          </div>
+        </section>
+
+        <!-- 5. LEARN (THREAT ENCYCLOPEDIA) VIEW -->
+        <section class="view-section" id="view-learn">
+          <div class="view-header">
+            <h2 class="view-heading">Threat Intelligence Encyclopedia & URL Inspector</h2>
+            <p class="view-subheading">Comprehensive reference guides on modern phishing vectors, attack taxonomy, and live URL structural decomposition.</p>
+          </div>
+
+          <!-- Interactive URL Inspector Workbench -->
+          <div class="url-decoder-workbench" style="margin-bottom: 2.5rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--emerald);">Interactive URL Structural Decomposition</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Paste any URL below to inspect protocol schemes, hostname boundaries, Shannon entropy, and path tokens in real time.</p>
+            
+            <input type="text" class="search-input" id="url-inspector-input" placeholder="https://user:pass@subdomain.bank-login.ru:8080/verify/auth?token=123#anchor" style="width: 100%; margin-bottom: 1rem;" />
+
+            <div class="decoder-output-grid" id="url-inspector-output">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Educational Knowledge Cards -->
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">Threat Vector Taxonomy</h3>
+          <div class="learn-grid">
+            <div class="learn-card">
+              <h4 class="learn-card-title">Punycode & Homoglyph Attacks</h4>
+              <p class="learn-card-body">Attackers register Internationalized Domain Names (IDNs) using Cyrillic or Greek characters (e.g. Cyrillic 'а' U+0430) that appear visually indistinguishable from Latin 'a'. Browsers encode these as <code>xn--</code> prefixed domains.</p>
+            </div>
+
+            <div class="learn-card">
+              <h4 class="learn-card-title">Brand Typosquatting & Combosquatting</h4>
+              <p class="learn-card-body">Combosquatting occurs when attackers pair legitimate brand names with security terms (e.g., <code>paypal-security-verify.com</code>). Typosquatting relies on character substitutions (<code>paypa1.com</code>, <code>rnicrosoft.com</code>) to deceive hurried users.</p>
+            </div>
+
+            <div class="learn-card">
+              <h4 class="learn-card-title">Credential Harvesting & Subdomain Masking</h4>
+              <p class="learn-card-body">On mobile devices with truncated address bars, attackers place trusted brand names deep within subdomains (<code>paypal.com.account-verify.ru</code>), obscuring the true root domain at the far right of the host string.</p>
+            </div>
+
+            <div class="learn-card">
+              <h4 class="learn-card-title">Urgency & Psychological Coercion</h4>
+              <p class="learn-card-body">Phishing messages manufacture artificial crisis (e.g. "Account suspended within 24 hours", "Immediate IRS legal summons") to trigger cognitive overload and bypass user caution.</p>
+            </div>
+
+            <div class="learn-card">
+              <h4 class="learn-card-title">APK Namespace Shadowing & Suffix Hijacking</h4>
+              <p class="learn-card-body">Malware authors disguise trojanized Android packages by shadowing official namespaces (e.g. <code>com.whatsapp.update.free</code>) or faking core OS services (<code>com.android.system.patch</code>) to solicit Accessibility permissions.</p>
+            </div>
+
+            <div class="learn-card">
+              <h4 class="learn-card-title">Open Redirect & @ Masquerade Exploitation</h4>
+              <p class="learn-card-body">Browsers interpret characters before the <code>@</code> symbol as basic authentication credentials. Visiting <code>https://google.com@phish-site.ru</code> routes traffic directly to <code>phish-site.ru</code>.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. SETTINGS & BYOK VIEW -->
+        <section class="view-section" id="view-settings">
+          <div class="view-header">
+            <h2 class="view-heading">Settings & Privacy Configuration</h2>
+            <p class="view-subheading">Manage your Bring-Your-Own-Key (BYOK) Gemini credentials, analysis engine preferences, and local data persistence.</p>
+          </div>
+
+          <div class="settings-card">
+            
+            <div class="form-group">
+              <label class="form-label" for="settings-api-key">Google Gemini API Key (Optional BYOK)</label>
+              <p class="form-hint">PhishGuard operates 100% offline using deterministic heuristics. To enable AI threat synthesis, supply your personal Gemini 2.5 Flash API Key. Keys are stored strictly in your browser's localStorage and never transmitted to external third-party servers.</p>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="password" class="form-input" id="settings-api-key" placeholder="AIzaSy..." style="flex: 1;" />
+                <button class="btn-sm" id="btn-toggle-key-visibility">Show</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="settings-engine-mode">Detection Engine Mode</label>
+              <select class="filter-select" id="settings-engine-mode" style="width: 100%;">
+                <option value="hybrid">Hybrid Mode (Deterministic Heuristics + AI Synthesis when key present)</option>
+                <option value="deterministic">Deterministic Only (100% Offline, Rule & Vector Engine)</option>
+                <option value="ai_only">AI Context Only (Requires valid Gemini API Key)</option>
+              </select>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+              <button class="btn-sm btn-primary" id="btn-save-settings">Save Preferences</button>
+              <button class="btn-sm" id="btn-remove-api-key" style="color: var(--crimson);">Remove API Key</button>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle);">
+              <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--crimson);">Privacy & Local Data Management</h4>
+              <p class="form-hint" style="margin-bottom: 1rem;">Wipe all stored investigation records, session telemetry, and configured API keys from this browser instance.</p>
+              <button class="btn-sm" id="btn-wipe-all-data" style="background: var(--crimson-dim); color: var(--crimson); border-color: var(--crimson-border);">Wipe All Local Storage Data</button>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- INVESTIGATION DETAIL MODAL -->
+  <div class="modal-backdrop" id="detail-modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-report-id">Investigation Details</h3>
+        <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-report-body">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Orchestrator Script -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
